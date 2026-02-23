@@ -406,14 +406,3 @@ jobs:
           echo "Uploading 2 ${artifact_name}.zip..."
           gh release upload "${{ env.NEW_TAG }}" "$GITHUB_WORKSPACE/${artifact_name}.zip" --clobber
         done
-
-  notify:
-    needs: release
-    if: ${{ always() && (inputs.release_type == 'Actions' || needs.release.result == 'success') }}
-    uses: ./.github/workflows/notify.yml
-    secrets: inherit
-    with:
-      release_type: ${{ inputs.release_type }}
-      new_tag: ${{ needs.release.outputs.new_tag }}
-      release_result: ${{ needs.release.result }}
-        done
