@@ -25,8 +25,8 @@ jobs:
       matrix:
         include:
           # Active series
-          - sub_level: "250"
-            os_patch_level: "2026-02"
+          - sub_level: "246"
+            os_patch_level: "2025-12"
 
     uses: ./.github/workflows/build.yml
     secrets: inherit
